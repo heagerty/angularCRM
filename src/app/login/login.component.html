@@ -1,0 +1,51 @@
+
+
+<div class="login-form-container">
+  <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field>
+        <mat-label for="login">Identifiant</mat-label>
+        <input matInput id="login" type="text" formControlName="login">
+      </mat-form-field>
+      <crm-help [field]="loginForm.get('login')!"
+            [errorMessages]="{
+              required: 'Entrez votre login',
+              minlength: 'Le login doit avoir un minimum de 3 caractères.'
+            }">
+      </crm-help>
+</p>
+<p>
+      <mat-form-field>
+        <mat-label for="password">Password</mat-label>
+        <input matInput id="password" type="password" formControlName="password">
+        <crm-help [field]="loginForm.get('password')!"
+            [errorMessages]="{required: 'Entrez votre mot de passe'}"></crm-help>
+      </mat-form-field>
+
+      <!--
+      <label for="login">Identifiant</label>
+      <input id="login" type="text" formControlName="login">
+      <span *ngIf="loginForm.get('login')?.touched && loginForm.get('login')?.errors?.required" id="loginRequiredError">
+        le champ est requis
+      </span>
+      <span *ngIf="loginForm.get('login')?.touched && loginForm.get('login')?.errors?.minlength">
+        le login doit être 5 caracteres ou plus
+      </span>
+    </p>
+    <p>
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password">
+      <span *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.required">
+        le champ est requis
+      </span>
+      <span *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.length5Error">
+        le password doit être 5 caracteres ou plus
+      </span>
+    </p>
+    -->
+    <p>
+      <button mat-button type="submit" [disabled]="!loginForm.valid" color="primary">Log me in!</button>
+    </p>
+  </form>
+
+</div>
